@@ -1,0 +1,2 @@
+[2026-04-04 22:44:37] INFO: --- Starting Test Setup ---
+[2026-04-04 22:44:37] INFO: Navigating to /

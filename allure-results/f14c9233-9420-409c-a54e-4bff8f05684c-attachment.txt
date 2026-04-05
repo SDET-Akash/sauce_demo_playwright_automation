@@ -1,0 +1,23 @@
+[2026-04-04 23:22:46] INFO: --- Starting Test Setup ---
+[2026-04-04 23:22:46] INFO: Navigating to /
+[2026-04-04 23:22:49] INFO: Executing Login
+[2026-04-04 23:22:49] INFO: Filling input: [data-test="username"] with value: [REDACTED]
+[2026-04-04 23:22:49] INFO: Filling input: [data-test="password"] with value: [REDACTED]
+[2026-04-04 23:22:49] INFO: Clicking on element: [data-test="login-button"]
+[2026-04-04 23:22:49] INFO: Verifying inventory page is loaded
+[2026-04-04 23:22:49] INFO: Element .inventory_container visibility: true
+[2026-04-04 23:22:49] INFO: Executing Checkout Flow
+[2026-04-04 23:22:49] INFO: Adding 3 random items to cart
+[2026-04-04 23:22:49] INFO: Adding item: sauce-labs-bike-light
+[2026-04-04 23:22:49] INFO: Adding item to cart: sauce-labs-bike-light
+[2026-04-04 23:22:49] INFO: Clicking on element: [data-test="add-to-cart-sauce-labs-bike-light"]
+[2026-04-04 23:22:49] INFO: Adding item: sauce-labs-onesie
+[2026-04-04 23:22:49] INFO: Adding item to cart: sauce-labs-onesie
+[2026-04-04 23:22:49] INFO: Clicking on element: [data-test="add-to-cart-sauce-labs-onesie"]
+[2026-04-04 23:22:49] INFO: Adding item: sauce-labs-backpack
+[2026-04-04 23:22:49] INFO: Adding item to cart: sauce-labs-backpack
+[2026-04-04 23:22:49] INFO: Clicking on element: [data-test="add-to-cart-sauce-labs-backpack"]
+[2026-04-04 23:22:49] INFO: Navigating to cart
+[2026-04-04 23:22:49] INFO: Clicking on element: .shopping_cart_link
+[2026-04-04 23:22:49] INFO: Cart contains 3 items
+[2026-04-04 23:22:49] INFO: Cart validation successful

@@ -1,0 +1,162 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: checkout.spec.js >> E-commerce Checkout Flow >> User should be able to successfully login and checkout an item @smoke
+- Location: tests\checkout.spec.js:21:3
+
+# Error details
+
+```
+TypeError: Cannot read properties of undefined (reading 'page')
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - button "Open Menu" [ref=e8] [cursor=pointer]
+          - img "Open Menu" [ref=e9]
+        - generic [ref=e11]: Swag Labs
+        - generic [ref=e14]: "3"
+      - generic [ref=e16]: Your Cart
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - generic [ref=e20]: QTY
+        - generic [ref=e21]: Description
+        - generic [ref=e22]:
+          - generic [ref=e23]: "1"
+          - generic [ref=e24]:
+            - link "Sauce Labs Onesie" [ref=e25] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e26]: Sauce Labs Onesie
+            - generic [ref=e27]: Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.
+            - generic [ref=e28]:
+              - generic [ref=e29]: $7.99
+              - button "Remove" [ref=e30] [cursor=pointer]
+        - generic [ref=e31]:
+          - generic [ref=e32]: "1"
+          - generic [ref=e33]:
+            - link "Sauce Labs Backpack" [ref=e34] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e35]: Sauce Labs Backpack
+            - generic [ref=e36]: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+            - generic [ref=e37]:
+              - generic [ref=e38]: $29.99
+              - button "Remove" [ref=e39] [cursor=pointer]
+        - generic [ref=e40]:
+          - generic [ref=e41]: "1"
+          - generic [ref=e42]:
+            - link "Test.allTheThings() T-Shirt (Red)" [ref=e43] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e44]: Test.allTheThings() T-Shirt (Red)
+            - generic [ref=e45]: This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.
+            - generic [ref=e46]:
+              - generic [ref=e47]: $15.99
+              - button "Remove" [ref=e48] [cursor=pointer]
+      - generic [ref=e49]:
+        - button "Go back Continue Shopping" [ref=e50] [cursor=pointer]:
+          - img "Go back" [ref=e51]
+          - text: Continue Shopping
+        - button "Checkout" [ref=e52] [cursor=pointer]
+  - contentinfo [ref=e53]:
+    - list [ref=e54]:
+      - listitem [ref=e55]:
+        - link "Twitter" [ref=e56] [cursor=pointer]:
+          - /url: https://twitter.com/saucelabs
+      - listitem [ref=e57]:
+        - link "Facebook" [ref=e58] [cursor=pointer]:
+          - /url: https://www.facebook.com/saucelabs
+      - listitem [ref=e59]:
+        - link "LinkedIn" [ref=e60] [cursor=pointer]:
+          - /url: https://www.linkedin.com/company/sauce-labs/
+    - generic [ref=e61]: © 2026 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy
+```
+
+# Test source
+
+```ts
+  1  | const { test, expect } = require('@playwright/test');
+  2  | const { EnvLoader } = require('../utils/EnvLoader');
+  3  | const testData = require('../data/testData.json');
+  4  | const { Logger } = require('../utils/Logger');
+  5  | 
+  6  | // Import the Page Objects directly
+  7  | const { LoginPage } = require('../pages/LoginPage');
+  8  | const { InventoryPage } = require('../pages/InventoryPage');
+  9  | const { CartPage } = require('../pages/CartPage');
+  10 | const { CheckoutPage } = require('../pages/CheckoutPage');
+  11 | 
+  12 | test.describe('E-commerce Checkout Flow', () => {
+  13 | 
+  14 |   test.beforeEach(async ({ page }) => {
+  15 |     Logger.info('--- Starting Test Setup ---');
+  16 |     // Instantiate just what we need for the setup
+  17 |     const loginPage = new LoginPage(page);
+  18 |     await loginPage.navigateToHome();
+  19 |   });
+  20 | 
+  21 |   test('User should be able to successfully login and checkout an item @smoke', async ({ page }) => {
+  22 |     // 1. Manually Instantiate all required Page Objects passing the current 'page'
+  23 |     const loginPage = new LoginPage(page);
+  24 |     const inventoryPage = new InventoryPage(page);
+  25 |     const cartPage = new CartPage(page);
+  26 |     const checkoutPage = new CheckoutPage(page);
+  27 | 
+  28 |     const username = EnvLoader.getTestUser();
+  29 |     const password = EnvLoader.getTestPassword();
+  30 |     const { firstName, lastName, postalCode } = testData.checkoutData;
+  31 | 
+  32 |     Logger.info('Executing Login');
+  33 |     await loginPage.login(username, password);
+  34 | 
+  35 |     // Verify successful login by checking inventory page loaded
+  36 |     await expect(page).toHaveURL(/.*inventory.html/);
+  37 |     const isLoaded = await inventoryPage.verifyInventoryLoaded();
+  38 |     expect(isLoaded).toBeTruthy();
+  39 | 
+  40 |     Logger.info('Executing Checkout Flow');
+  41 | 
+  42 |     // Add 3 random items
+  43 |     const selectedItems = await inventoryPage.addRandomItemsToCart(3);
+  44 |     await inventoryPage.goToCart();
+  45 |     await cartPage.validateCartItems(3);
+> 46 |     await this.page.waitForTimeout(5000);
+     |                ^ TypeError: Cannot read properties of undefined (reading 'page')
+  47 | 
+  48 | 
+  49 |     // Proceed to checkout from cart
+  50 |     await cartPage.proceedToCheckout();
+  51 | 
+  52 |     // Fill check out info and finish
+  53 |     await checkoutPage.fillCheckoutInformation(firstName, lastName, postalCode);
+  54 |     await checkoutPage.finishCheckout();
+  55 | 
+  56 |     // Verify successful checkout
+  57 |     const confirmation = await checkoutPage.getCompletionMessage();
+  58 |     expect(confirmation).toBe('Thank you for your order!');
+  59 |     Logger.info('--- Test Completed Successfully ---');
+  60 |   });
+  61 | 
+  62 |   test('User should see validation error on invalid login @negative', async ({ page }) => {
+  63 |     // Instantiate Page Object
+  64 |     const loginPage = new LoginPage(page);
+  65 | 
+  66 |     Logger.info('Executing Invalid Login Flow');
+  67 |     await loginPage.login('invalid_user', 'wrong_password');
+  68 | 
+  69 |     const errorMessage = await loginPage.getErrorMessage();
+  70 |     expect(errorMessage).toContain('Username and password do not match');
+  71 |   });
+  72 | 
+  73 | });
+  74 | 
+```

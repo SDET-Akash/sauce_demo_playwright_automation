@@ -1,0 +1,24 @@
+[2026-04-04 23:17:44] INFO: --- Starting Test Setup ---
+[2026-04-04 23:17:44] INFO: Navigating to /
+[2026-04-04 23:17:46] INFO: Executing Login
+[2026-04-04 23:17:46] INFO: Filling input: [data-test="username"] with value: [REDACTED]
+[2026-04-04 23:17:46] INFO: Filling input: [data-test="password"] with value: [REDACTED]
+[2026-04-04 23:17:46] INFO: Clicking on element: [data-test="login-button"]
+[2026-04-04 23:17:46] INFO: Element .inventory_container visibility: true
+[2026-04-04 23:17:46] INFO: Executing Checkout Flow
+[2026-04-04 23:17:46] INFO: 3 random items added to cart
+[2026-04-04 23:17:46] INFO: Clicking on element: .shopping_cart_link
+[2026-04-04 23:17:46] INFO: Cart contains 3 items
+[2026-04-04 23:17:46] INFO: Validating cart: expected 3, actual 3
+[2026-04-04 23:17:46] INFO: Cart validation successful: 3 items present
+[2026-04-04 23:17:46] INFO: Proceeding to checkout from the cart page
+[2026-04-04 23:17:46] INFO: Clicking on element: [data-test="checkout"]
+[2026-04-04 23:17:46] INFO: Filling checkout details
+[2026-04-04 23:17:46] INFO: Filling input: [data-test="firstName"] with value: [REDACTED]
+[2026-04-04 23:17:46] INFO: Filling input: [data-test="lastName"] with value: [REDACTED]
+[2026-04-04 23:17:46] INFO: Filling input: [data-test="postalCode"] with value: [REDACTED]
+[2026-04-04 23:17:47] INFO: Clicking on element: [data-test="continue"]
+[2026-04-04 23:17:47] INFO: Completing purchase
+[2026-04-04 23:17:47] INFO: Clicking on element: [data-test="finish"]
+[2026-04-04 23:17:47] INFO: Retrieved text from .complete-header: Thank you for your order!
+[2026-04-04 23:17:47] INFO: --- Test Completed Successfully ---

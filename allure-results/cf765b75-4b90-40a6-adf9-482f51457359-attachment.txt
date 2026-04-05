@@ -1,0 +1,24 @@
+[2026-04-03 13:22:29] INFO: --- Starting Test Setup ---
+[2026-04-03 13:22:29] INFO: Navigating to /
+[2026-04-03 13:22:30] INFO: Executing Login
+[2026-04-03 13:22:30] INFO: Filling input: [data-test="username"] with value: [REDACTED]
+[2026-04-03 13:22:30] INFO: Filling input: [data-test="password"] with value: [REDACTED]
+[2026-04-03 13:22:30] INFO: Clicking on element: [data-test="login-button"]
+[2026-04-03 13:22:30] INFO: Verifying inventory page is loaded
+[2026-04-03 13:22:30] INFO: Element .inventory_container visibility: true
+[2026-04-03 13:22:30] INFO: Executing Checkout Flow
+[2026-04-03 13:22:30] INFO: Adding item to cart: sauce-labs-backpack
+[2026-04-03 13:22:30] INFO: Clicking on element: [data-test="add-to-cart-sauce-labs-backpack"]
+[2026-04-03 13:22:30] INFO: Navigating to cart
+[2026-04-03 13:22:30] INFO: Clicking on element: .shopping_cart_link
+[2026-04-03 13:22:30] INFO: Proceeding to checkout from the cart page
+[2026-04-03 13:22:30] INFO: Clicking on element: [data-test="checkout"]
+[2026-04-03 13:22:30] INFO: Filling checkout details
+[2026-04-03 13:22:30] INFO: Filling input: [data-test="firstName"] with value: [REDACTED]
+[2026-04-03 13:22:30] INFO: Filling input: [data-test="lastName"] with value: [REDACTED]
+[2026-04-03 13:22:30] INFO: Filling input: [data-test="postalCode"] with value: [REDACTED]
+[2026-04-03 13:22:30] INFO: Clicking on element: [data-test="continue"]
+[2026-04-03 13:22:30] INFO: Completing purchase
+[2026-04-03 13:22:30] INFO: Clicking on element: [data-test="finish"]
+[2026-04-03 13:22:30] INFO: Retrieved text from .complete-header: Thank you for your order!
+[2026-04-03 13:22:30] INFO: --- Test Completed Successfully ---

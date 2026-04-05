@@ -1,0 +1,7 @@
+[2026-04-03 13:23:49] INFO: --- Starting Test Setup ---
+[2026-04-03 13:23:49] INFO: Navigating to /
+[2026-04-03 13:23:50] INFO: Executing Invalid Login Flow
+[2026-04-03 13:23:50] INFO: Filling input: [data-test="username"] with value: [REDACTED]
+[2026-04-03 13:23:50] INFO: Filling input: [data-test="password"] with value: [REDACTED]
+[2026-04-03 13:23:50] INFO: Clicking on element: [data-test="login-button"]
+[2026-04-03 13:23:50] INFO: Retrieved text from [data-test="error"]: Epic sadface: Username and password do not match any user in this service

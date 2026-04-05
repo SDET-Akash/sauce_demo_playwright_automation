@@ -1,0 +1,8 @@
+[2026-04-04 23:17:10] INFO: --- Starting Test Setup ---
+[2026-04-04 23:17:10] INFO: Navigating to /
+[2026-04-04 23:17:11] INFO: Executing Login
+[2026-04-04 23:17:11] INFO: Filling input: [data-test="username"] with value: [REDACTED]
+[2026-04-04 23:17:11] INFO: Filling input: [data-test="password"] with value: [REDACTED]
+[2026-04-04 23:17:11] INFO: Clicking on element: [data-test="login-button"]
+[2026-04-04 23:17:12] INFO: Element .inventory_container visibility: true
+[2026-04-04 23:17:12] INFO: Executing Checkout Flow
