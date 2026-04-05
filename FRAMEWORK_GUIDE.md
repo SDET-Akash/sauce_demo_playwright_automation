@@ -1,10 +1,3 @@
-# Playwright Automation Framework
-
-## Overview
-
-This project is a Playwright + JavaScript based automation framework designed to test an end-to-end e-commerce checkout flow.
-The goal was to build something clean, reusable, and easy to scale for real-world testing needs.
-
 ## What’s Covered
 
 Login functionality (valid and invalid scenarios)
